@@ -7,11 +7,11 @@ public class TaskManager {
         this.taskCount = 0;
     }
 
-    public void addTask(String description) {
+    public void addTask(Task task) {
         if (taskCount < tasks.length) {
-            tasks[taskCount] = new Task(description);
+            tasks[taskCount] = task;
             taskCount++;
-            System.out.println("Added: " + description);
+            System.out.println("Added: " + task.getDescription());
         } else {
             System.out.println("talkO has no more room!");
         }
@@ -22,7 +22,7 @@ public class TaskManager {
             System.out.println("Yay! You have no tasks :)");
         } else {
             for (int i = 0; i < taskCount; i++) {
-                System.out.println((i + 1) + ". " + "[" + tasks[i].getStatusIcon() + "] " + tasks[i].getDescription());
+                System.out.println((i + 1) + ". " + tasks[i].getDescription());
             }
         }
     }

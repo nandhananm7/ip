@@ -34,8 +34,19 @@ public class Talko {
                 int unmarkIndex = Integer.parseInt(argument) - 1;
                 taskManager.markTask(unmarkIndex, false);
                 break;
+            case "todo":
+                taskManager.addTask(new Todo(argument));
+                break;
+            case "deadline":
+                String[] deadlineDetails = argument.split(" /by", 2);
+                taskManager.addTask(new Deadline(deadlineDetails[0], deadlineDetails[1]));
+                break;
+            case "event":
+                String[] eventDetails = argument.split(" /from | /to ", 3);
+                taskManager.addTask(new Event(eventDetails[0], eventDetails[1], eventDetails[2]));
+                break;
             default:
-                taskManager.addTask(input);
+                System.out.println("Unknown command. Please enter a valid command.");
             }
             System.out.println(line);
         }
