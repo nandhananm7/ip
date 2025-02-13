@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
 public class Talko {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws TalkoException {
         Scanner in = new Scanner(System.in);
         TaskManager taskManager = new TaskManager();
+        CommandHandler commandHandler = new CommandHandler(taskManager);
 
         String symbol = "+-+-+-+-+-+\n" + "|t|a|l|k|O|\n" + "+-+-+-+-+-+";
         String line = "----------------------------------------------";
@@ -14,41 +15,23 @@ public class Talko {
         System.out.println(line);
 
         while (true) {
-            String input = in.nextLine().trim();
-            String command = input.split(" ", 2)[0];
-            String argument = input.contains(" ") ? input.substring(input.indexOf(" ") + 1).trim() : "";
+            try {
+                System.out.print("> ");
+                String input = in.nextLine().trim();
 
-            switch (command.toLowerCase()) {
-            case "bye":
-                System.out.println("Bye! Have a great day");
-                in.close();
-                return;
-            case "list":
-                taskManager.listTasks();
-                break;
-            case "mark":
-                int markIndex = Integer.parseInt(argument) - 1;
-                taskManager.markTask(markIndex, true);
-                break;
-            case "unmark":
-                int unmarkIndex = Integer.parseInt(argument) - 1;
-                taskManager.markTask(unmarkIndex, false);
-                break;
-            case "todo":
-                taskManager.addTask(new Todo(argument));
-                break;
-            case "deadline":
-                String[] deadlineDetails = argument.split(" /by", 2);
-                taskManager.addTask(new Deadline(deadlineDetails[0], deadlineDetails[1]));
-                break;
-            case "event":
-                String[] eventDetails = argument.split(" /from | /to ", 3);
-                taskManager.addTask(new Event(eventDetails[0], eventDetails[1], eventDetails[2]));
-                break;
-            default:
-                System.out.println("Unknown command. Please enter a valid command.");
+                if (input.equalsIgnoreCase("bye")) {
+                    break;
+                }
+
+                commandHandler.handleCommand(input);
+            } catch (TalkoException e) {
+                System.out.println("Error: " + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Unexpected Error: " + e.getMessage());
             }
+
             System.out.println(line);
         }
+        in.close();
     }
 }

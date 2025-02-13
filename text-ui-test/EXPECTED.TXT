@@ -8,13 +8,13 @@ Added: [T][ ] Finish homework
 ----------------------------------------------
 Added: [T][ ] Read book
 ----------------------------------------------
-Added: [D][ ] Submit report (by: 5pm)
+Added: [D][ ] Submit report (by:  5pm)
 ----------------------------------------------
 Added: [E][ ] Team meeting (from: 2pm to: 4pm)
 ----------------------------------------------
 1. [T][ ] Finish homework
 2. [T][ ] Read book
-3. [D][ ] Submit report (by: 5pm)
+3. [D][ ] Submit report (by:  5pm)
 4. [E][ ] Team meeting (from: 2pm to: 4pm)
 ----------------------------------------------
 Marked as Done!

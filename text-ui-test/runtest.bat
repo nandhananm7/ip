@@ -18,13 +18,3 @@ java -classpath ..\bin Talko < input.txt > ACTUAL.TXT
 
 REM compare the output to the expected output
 FC ACTUAL.TXT EXPECTED.TXT
-
-REM check if comparison was successful
-IF ERRORLEVEL 1 (
-    echo Test failed! There are differences between ACTUAL.TXT and EXPECTED.TXT.
-) ELSE (
-    echo Test passed! No differences found.
-)
-
-REM pause the script to view results
-PAUSE

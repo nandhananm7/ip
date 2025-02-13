@@ -27,11 +27,11 @@ public class TaskManager {
         }
     }
 
-    public void markTask(int index, boolean isDone) {
-        if (index >= 0 && index < taskCount) {
-            tasks[index].mark(isDone);
+    public void markTask(int index, boolean isDone) throws TalkoException {
+        if (index < 0 || index >= taskCount) {
+            throw new TalkoException("Please enter a valid task number!");
         } else {
-            System.out.println("Please enter a valid task number!");
+            tasks[index].mark(isDone);
         }
     }
 }
