@@ -1,18 +1,23 @@
 import java.util.Scanner;
 
 public class Talko {
+    private static final String SYMBOL = "████████╗ █████╗ ██╗     ██╗  ██╗ ██████╗ \n" +
+            "╚══██╔══╝██╔══██╗██║     ██║ ██╔╝██╔═══██╗\n" +
+            "   ██║   ███████║██║     █████╔╝ ██║   ██║\n" +
+            "   ██║   ██╔══██║██║     ██╔═██╗ ██║   ██║\n" +
+            "   ██║   ██║  ██║███████╗██║  ██╗╚██████╔╝\n" +
+            "   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ";
+    private static final String LINE = "----------------------------------------------";
+
     public static void main(String[] args) throws TalkoException {
         Scanner in = new Scanner(System.in);
         TaskManager taskManager = new TaskManager();
         CommandHandler commandHandler = new CommandHandler(taskManager);
 
-        String symbol = "+-+-+-+-+-+\n" + "|t|a|l|k|O|\n" + "+-+-+-+-+-+";
-        String line = "----------------------------------------------";
-
         System.out.println("Hello, you can call me");
-        System.out.println(symbol);
+        System.out.println(SYMBOL);
         System.out.println("How can I help you today?");
-        System.out.println(line);
+        System.out.println(LINE);
 
         while (true) {
             try {
@@ -22,7 +27,6 @@ public class Talko {
                 if (input.equalsIgnoreCase("bye")) {
                     break;
                 }
-
                 commandHandler.handleCommand(input);
             } catch (TalkoException e) {
                 System.out.println("Error: " + e.getMessage());
@@ -30,7 +34,7 @@ public class Talko {
                 System.out.println("Unexpected Error: " + e.getMessage());
             }
 
-            System.out.println(line);
+            System.out.println(LINE);
         }
         in.close();
     }
