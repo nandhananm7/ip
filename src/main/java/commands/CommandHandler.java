@@ -1,3 +1,11 @@
+package commands;
+
+import exceptions.TalkoException;
+import managers.TaskManager;
+import tasks.Deadline;
+import tasks.Event;
+import tasks.Todo;
+
 public class CommandHandler {
     private TaskManager taskManager;
 
