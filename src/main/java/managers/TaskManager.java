@@ -39,4 +39,18 @@ public class TaskManager {
             tasks[index].mark(isDone);
         }
     }
+
+    public void removeTask(int index) throws TalkoException {
+        if (index < 0 || index >= taskCount) {
+            throw new TalkoException("Please enter a valid task number!");
+        } else {
+            System.out.println("Removed: " + tasks[index].getDescription());
+            //shift elements to avoid blanks and maintain indexing
+            for (int i = index; i < taskCount - 1; i++) {
+                tasks[i] = tasks[i + 1];
+            }
+            tasks[taskCount - 1] = null;
+            taskCount--;
+        }
+    }
 }
