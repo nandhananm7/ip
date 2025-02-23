@@ -1,42 +1,43 @@
 package managers;
 
+import java.util.ArrayList;
+
 import exceptions.TalkoException;
 import tasks.Task;
+import java.util.ArrayList;
+import storage.Storage;
 
 public class TaskManager {
-    private Task[] tasks;
-    private int taskCount;
+    private ArrayList<Task> tasks;
+    private Storage storage;
 
     public TaskManager() {
-        this.tasks = new Task[100];
-        this.taskCount = 0;
+        this.storage = new Storage();
+        this.tasks = storage.load();
     }
 
     public void addTask(Task task) {
-        if (taskCount < tasks.length) {
-            tasks[taskCount] = task;
-            taskCount++;
-            System.out.println("Added: " + task.getDescription());
-        } else {
-            System.out.println("talkO has no more room!");
-        }
+        tasks.add(task);
+        storage.save(tasks);
+        System.out.println("Added: " + task.getDescription());
     }
 
     public void listTasks() {
-        if (taskCount == 0) {
+        if (tasks.isEmpty()) {
             System.out.println("Yay! You have no tasks :)");
         } else {
-            for (int i = 0; i < taskCount; i++) {
-                System.out.println((i + 1) + ". " + tasks[i].getDescription());
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.println((i + 1) + ". " + tasks.get(i).getDescription());
             }
         }
     }
 
     public void markTask(int index, boolean isDone) throws TalkoException {
-        if (index < 0 || index >= taskCount) {
+        if (index < 0 || index >= tasks.size()) {
             throw new TalkoException("Please enter a valid task number!");
         } else {
-            tasks[index].mark(isDone);
+            tasks.get(index).mark(isDone);
+            storage.save(tasks);
         }
     }
 }

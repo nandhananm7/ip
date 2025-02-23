@@ -22,4 +22,6 @@ public abstract class Task {
     public String getDescription() {
         return "[" + getStatusIcon()+ "] " + description;
     }
+
+    public abstract String toFileFormat();
 }
