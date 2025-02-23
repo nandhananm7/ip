@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import exceptions.TalkoException;
 import tasks.Task;
 import java.util.ArrayList;
+import storage.Storage;
 
 public class TaskManager {
 <<<<<<< HEAD
     private ArrayList<Task> tasks;
+    private Storage storage;
 
     public TaskManager() {
+<<<<<<< HEAD
         this.tasks = new ArrayList<>();
 =======
     ArrayList<Task> tasks = new ArrayList<>();
@@ -19,14 +22,22 @@ public class TaskManager {
     public TaskManager() {
         this.taskCount = 0;
 >>>>>>> branch-level-6
+=======
+        this.storage = new Storage();
+        this.tasks = storage.load();
+>>>>>>> branch-level-7
     }
 
     public void addTask(Task task) {
         tasks.add(task);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         taskCount++;
 >>>>>>> branch-level-6
+=======
+        storage.save(tasks);
+>>>>>>> branch-level-7
         System.out.println("Added: " + task.getDescription());
     }
 
@@ -50,6 +61,7 @@ public class TaskManager {
         } else {
             tasks.get(index).mark(isDone);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         }
     }
@@ -62,6 +74,9 @@ public class TaskManager {
             tasks.remove(index);
             taskCount--;
 >>>>>>> branch-level-6
+=======
+            storage.save(tasks);
+>>>>>>> branch-level-7
         }
     }
 }
