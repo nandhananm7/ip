@@ -22,7 +22,7 @@ public class CommandHandler {
         case "bye":
             System.out.println("Bye! Have a great day");
             System.exit(0);
-            return;
+            break;
         case "list":
             taskManager.listTasks();
             break;
@@ -39,8 +39,8 @@ public class CommandHandler {
             taskManager.addTask(new Todo(argument));
             break;
         case "deadline":
-            String[] deadlineDetails = argument.split(" /by", 2);
-            if (deadlineDetails.length < 3) throw new TalkoException("Oops Invalid format :( Try rewriting it to this format: deadline <description> /by <due date>");
+            String[] deadlineDetails = argument.split(" /by ", 2);
+            if (deadlineDetails.length < 2) throw new TalkoException("Oops Invalid format :( Try rewriting it to this format: deadline <description> /by <due date>");
             taskManager.addTask(new Deadline(deadlineDetails[0], deadlineDetails[1]));
             break;
         case "event":
