@@ -48,6 +48,10 @@ public class CommandHandler {
             if (eventDetails.length < 3) throw new TalkoException("Oops Invalid format :( Try rewriting it to this format: event <description> /from <start> /to <end>");
             taskManager.addTask(new Event(eventDetails[0], eventDetails[1], eventDetails[2]));
             break;
+        case "remove":
+            int removeIndex = Integer.parseInt(argument) - 1;
+            taskManager.removeTask(removeIndex);
+            break;
         default:
             throw new TalkoException("Command not recognized. Please try using any of the following commands: bye, list, mark, unmark, todo, event, deadline");
         }
