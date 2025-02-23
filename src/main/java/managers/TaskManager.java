@@ -5,16 +5,20 @@ import java.util.ArrayList;
 import exceptions.TalkoException;
 import tasks.Task;
 import java.util.ArrayList;
+import storage.Storage;
 
 public class TaskManager {
     private ArrayList<Task> tasks;
+    private Storage storage;
 
     public TaskManager() {
-        this.tasks = new ArrayList<>();
+        this.storage = new Storage();
+        this.tasks = storage.load();
     }
 
     public void addTask(Task task) {
         tasks.add(task);
+        storage.save(tasks);
         System.out.println("Added: " + task.getDescription());
     }
 
@@ -33,6 +37,7 @@ public class TaskManager {
             throw new TalkoException("Please enter a valid task number!");
         } else {
             tasks.get(index).mark(isDone);
+            storage.save(tasks);
         }
     }
 }
