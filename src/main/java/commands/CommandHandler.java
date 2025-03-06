@@ -21,8 +21,7 @@ public class CommandHandler {
         switch (command) {
         case "bye":
             System.out.println("Bye! Have a great day");
-            System.exit(0);
-            break;
+            throw new TalkoException("Exit");
         case "list":
             taskManager.listTasks();
             break;

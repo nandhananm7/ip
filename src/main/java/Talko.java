@@ -1,45 +1,42 @@
-import java.util.Scanner;
-
 import commands.CommandHandler;
 import exceptions.TalkoException;
 import managers.TaskManager;
+import ui.Ui;
+import java.util.Scanner;
 
 public class Talko {
-    private static final String SYMBOL = "████████╗ █████╗ ██╗     ██╗  ██╗ ██████╗ \n" +
-            "╚══██╔══╝██╔══██╗██║     ██║ ██╔╝██╔═══██╗\n" +
-            "   ██║   ███████║██║     █████╔╝ ██║   ██║\n" +
-            "   ██║   ██╔══██║██║     ██╔═██╗ ██║   ██║\n" +
-            "   ██║   ██║  ██║███████╗██║  ██╗╚██████╔╝\n" +
-            "   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ";
-    private static final String LINE = "----------------------------------------------";
+    private TaskManager taskManager;
+    private CommandHandler commandHandler;
+    private Ui ui;
 
-    public static void main(String[] args) throws TalkoException {
-        Scanner in = new Scanner(System.in);
+    public Talko() {
+        ui = new Ui();
         TaskManager taskManager = new TaskManager();
-        CommandHandler commandHandler = new CommandHandler(taskManager);
+        commandHandler = new CommandHandler(taskManager);
+    }
 
-        System.out.println("Hello, you can call me");
-        System.out.println(SYMBOL);
-        System.out.println("How can I help you today?");
-        System.out.println(LINE);
+    public void run() {
+        ui.showWelcomeMessage();
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             try {
-                System.out.print("> ");
-                String input = in.nextLine().trim();
-
-                if (input.equalsIgnoreCase("bye")) {
-                    break;
-                }
+                String input = ui.getUserInput(scanner);
                 commandHandler.handleCommand(input);
             } catch (TalkoException e) {
-                System.out.println("Error: " + e.getMessage());
+                if ("Exit".equals(e.getMessage())) {
+                    break;
+                }
+                ui.showError(e.getMessage());
             } catch (Exception e) {
-                System.out.println("Unexpected Error: " + e.getMessage());
+                ui.showUnexpectedError(e.getMessage());
             }
-
-            System.out.println(LINE);
+            ui.showLine();
         }
-        in.close();
+        scanner.close();
+    }
+
+    public static void main(String[] args) {
+        new Talko().run();
     }
 }
