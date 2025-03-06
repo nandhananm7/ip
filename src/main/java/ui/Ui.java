@@ -13,10 +13,12 @@ public class Ui {
 
     private final Scanner scanner;
 
+    //initializes the scanner
     public Ui() {
         scanner = new Scanner(System.in);
     }
 
+    //shows the welcome message
     public void showWelcomeMessage() {
         System.out.println("Hello, you can call me");
         System.out.println(SYMBOL);
@@ -29,6 +31,7 @@ public class Ui {
         return scanner.nextLine().trim();
     }
 
+    //prints error messages
     public void showError(String message) {
         System.out.println("Error: " + message);
     }

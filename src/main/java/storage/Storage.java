@@ -19,6 +19,7 @@ public class Storage {
         this.filePath = "./src/main/java/storage/Data.txt";
     }
 
+    //loads the saved tasks from file into the tasks array list
     public ArrayList<Task> load() {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
@@ -77,6 +78,7 @@ public class Storage {
         return tasks;
     }
 
+    //saves a task to the txt file every time it is called
     public void save(ArrayList<Task> tasks) {
         File file = new File(filePath);
 
