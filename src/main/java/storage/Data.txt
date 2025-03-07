@@ -1,4 +1,2 @@
-E | 0 | Nandhana attended CS2113 lecture Friday 21 Feb 2025 | 4pm | 6pm
-D | 0 | submit UG draft | today 2359
-T | 0 | hehehaha
-T | 0 | CS2113 assignment
+D | 0 | task 1 | 2025-07-07 0000
+E | 0 | event 1 | 2025-07-07 0000 | 2025-07-07 0200
