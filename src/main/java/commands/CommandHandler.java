@@ -51,6 +51,9 @@ public class CommandHandler {
             int removeIndex = Integer.parseInt(argument) - 1;
             taskManager.removeTask(removeIndex);
             break;
+        case "find":
+            taskManager.findTasks(argument);
+            break;
         default:
             throw new TalkoException("Command not recognized. Please try using any of the following commands: bye, list, mark, unmark, todo, event, deadline");
         }
