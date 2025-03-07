@@ -21,11 +21,13 @@ public class Deadline extends Task {
         return dateTime.format(formatter);
     }
 
+    //get the description of the deadline
     @Override
     public String getDescription() {
         return "[D]" + super.getDescription() + " (by: " + formatDateTime(by) + ")";
     }
 
+    //convert user input to a standardized file format
     @Override
     public String toFileFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");

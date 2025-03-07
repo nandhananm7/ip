@@ -13,6 +13,7 @@ public class CommandHandler {
         this.taskManager = taskManager;
     }
 
+    //handles user command and performs appropriate action
     public void handleCommand(String input) throws TalkoException {
         String[] parts = input.split(" ", 2);
         String command = parts[0].toLowerCase();

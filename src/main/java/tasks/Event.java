@@ -23,11 +23,13 @@ public class Event extends Task {
         return dateTime.format(formatter);
     }
 
+    //get the description of the event
     @Override
     public String getDescription() {
         return "[E]" + super.getDescription() + " (from: " + formatDateTime(from) + " to: " + formatDateTime(to) + ")";
     }
 
+    //convert user input to a standardized file format
     @Override
     public String toFileFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
