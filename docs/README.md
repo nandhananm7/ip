@@ -34,11 +34,11 @@ Adds a new todo task with the given description.
 ### 3. Add a Deadline Task
 **Command:**
 ```
-deadline <description> /by <due date>
+deadline <description> /by <due date in "yyyy-MM-dd HHmm" format>
 ```
 **Example:**
 ```
-deadline Submit assignment /by Monday
+deadline Submit assignment /by 2025-12-03 2100
 ```
 **Description:**
 Adds a new task with a deadline.
@@ -48,11 +48,11 @@ Adds a new task with a deadline.
 ### 4. Add an Event Task
 **Command:**
 ```
-event <description> /from <start time> /to <end time>
+event <description> /from <start time in "yyyy-MM-dd HHmm" format> /to <end time in "yyyy-MM-dd HHmm" format>
 ```
 **Example:**
 ```
-event Project meeting /from 2pm /to 4pm
+event Project meeting /from 2025-12-03 0900 /to 2025-12-03 2100
 ```
 **Description:**
 Adds a new event with a start and end time.
@@ -90,11 +90,11 @@ Marks the specified task as not completed.
 ### 7. Remove a Task
 **Command:**
 ```
-remove <task number>
+delete <task number>
 ```
 **Example:**
 ```
-remove 3
+delete 3
 ```
 **Description:**
 Removes the specified task from the list.
@@ -115,7 +115,17 @@ Searches for tasks that contain the given keyword.
 
 ---
 
-### 9. Exit the Application
+### 9. View all commands in Talko
+**Command:**
+```
+help
+```
+**Description:**
+Lists all the commands out with brief description.
+
+---
+
+### 10. Exit the Application
 **Command:**
 ```
 bye
@@ -148,10 +158,6 @@ Bye! Have a great day
 ```
 
 ---
-
-## Notes
-- Tasks are stored persistently using a storage system.
-- Use correct formatting for commands to avoid errors.
 
 Enjoy using Talko to manage your tasks efficiently!
 
