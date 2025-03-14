@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Handles reading from and writing to a file that stores task data.
+ */
 public class Storage {
     private final String filePath;
 
@@ -19,7 +22,12 @@ public class Storage {
         this.filePath = "./src/main/java/storage/Data.txt";
     }
 
-    //loads the saved tasks from file into the tasks array list
+    /**
+     * Loads tasks from the file into an ArrayList.
+     * If the file does not exist, an empty list is returned.
+     *
+     * @return An ArrayList containing loaded tasks.
+     */
     public ArrayList<Task> load() {
         ArrayList<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
@@ -78,7 +86,11 @@ public class Storage {
         return tasks;
     }
 
-    //saves a task to the txt file every time it is called
+    /**
+     * Saves the given list of tasks to a file.
+     *
+     * @param tasks The list of tasks to be saved.
+     */
     public void save(ArrayList<Task> tasks) {
         File file = new File(filePath);
 
